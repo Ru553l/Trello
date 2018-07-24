@@ -42,7 +42,6 @@ export default class CardFrame extends Component {
 
  columnCt = () => {
     var columnNo = 0;
-    console.log(this.state.data +'from column ct');
     this.state.data.map((cards) => {
       if(cards.columnId>columnNo){
         columnNo=cards.columnId;
@@ -61,13 +60,14 @@ getId=()=>{
 
  pushCard = (id, title, description, columnNo) => {
   var newData = this.state.data;
-  newData.splice((this.getId-1),0,{"id": this.getId(), "title": title, "description": description, "columnId": columnNo});
+  newData.splice((this.getId()-1),0,{"id": this.getId(), "title": title, "description": description, "columnId": columnNo});
   this.setState({data: newData});
  }
 
  pushColumn = () => {
  	var newData = this.state.data;
-  newData.push({id: this.getId(), columnId: this.columnCt()+1})
+  newData.push({id: this.getId(), columnId: (this.columnCt()+1)});
+  console.log('id: '+this.getId()+' and column Id is '+this.columnCt());
   this.setState({data: newData});
  }
 
@@ -88,7 +88,7 @@ getId=()=>{
  editCard = (id, title, description, columnNo) => {
   var newCardData = this.state.data; 
   newCardData=newCardData.filter((card)=> this.cutCard(card,id));
-  newCardData.push({
+  newCardData.splice(id-1,0,{
     "id": id,
     "title": title,
     "description": description,

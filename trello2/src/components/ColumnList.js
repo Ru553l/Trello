@@ -82,7 +82,7 @@ export default class ColumnList extends Component {
   	return (<div className='ColumnArea' key={j}>
               {this.props.data.filter((cards) => this.checkCards(cards,j)).map((cards, i)=>{
                   return (<div className='ColumnListSet'>
-                    <Column key={i+j*10} data={cards} editCard={this.changeCard} num={j} deleteCard={this.deleteCard}/>
+                    <Column key={i} data={cards} editCard={this.changeCard} num={j} deleteCard={this.deleteCard}/>
                     </div>);
                 })}
               <button onClick={()=>this.deleteColumn(j)}>Delete Column</button>

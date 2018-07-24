@@ -58,7 +58,7 @@ export default class Card extends Component {
         </form>
         </div>)
     }else{
-      return(<div className='CardView'>
+      return(<div draggable className='CardView'>
         <p>ID: {this.props.id}</p>
         <h3>{this.props.title}</h3>
         <p className='Description'>{this.props.description}</p>
