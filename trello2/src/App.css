@@ -1,28 +1,25 @@
 .App {
-  text-align: center;
+  display: flex;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.AddCardButton{
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.AddColumnButton{
+      height: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
-
-.App-title {
-  font-size: 1.5em;
+.CardForm{
+    font-size: small;
+  margin-left: 20px;
+  border: 2px solid;
+  padding: 10px 10px;
+  max-height: 500px;
+  margin-top: 20px;
 }
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.ColumnArea{
+  border: 1px solid;
+  padding: 20px 10px;
 }

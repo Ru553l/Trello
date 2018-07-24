@@ -61,7 +61,7 @@ export default class Card extends Component {
       return(<div className='CardView'>
         <p>ID: {this.props.id}</p>
         <h3>{this.props.title}</h3>
-        <p>{this.props.description}</p>
+        <p className='Description'>{this.props.description}</p>
         <button onClick={this.props.toggleEditMode}>Edit</button>
       </div>);
     }

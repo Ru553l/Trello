@@ -61,7 +61,7 @@ getId=()=>{
 
  pushCard = (id, title, description, columnNo) => {
   var newData = this.state.data;
-  newData.push({"id": this.getId(), "title": title, "description": description, "columnId": columnNo});
+  newData.splice((this.getId-1),0,{"id": this.getId(), "title": title, "description": description, "columnId": columnNo});
   this.setState({data: newData});
  }
 
@@ -74,7 +74,6 @@ getId=()=>{
  deleteColumn=(num)=>{
   var newData=this.state.data;
   newData=newData.filter((card)=>this.cutColumn(card,num));
-  console.log(newData);
   this.setState({data: newData});
  }
 
