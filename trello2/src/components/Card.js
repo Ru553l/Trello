@@ -43,6 +43,20 @@ export default class Card extends Component {
     });
   }
 
+  onDragOver = (e) =>{
+    console.log('on drag over is starting with '+e);
+  
+  }
+
+  onDragStart = (e)=>{
+    console.log('drag started with '+this.props.id);
+    //e.preventDefault();
+    e.dataTransfer.setData("id", this.props.id);
+    e.dataTransfer.setData("title", this.state.title);
+    e.dataTransfer.setData("description", this.state.description);
+    e.dataTransfer.setData("columnId", this.state.columnNo);
+  }
+
   cardRender = () =>{
     if(this.props.editMode){
       return (<div className='CardEdittor'>
@@ -58,7 +72,7 @@ export default class Card extends Component {
         </form>
         </div>)
     }else{
-      return(<div draggable className='CardView'>
+      return(<div draggable onDragStart={(e)=>this.onDragStart(e)} className='CardView'>
         <p>ID: {this.props.id}</p>
         <h3>{this.props.title}</h3>
         <p className='Description'>{this.props.description}</p>

@@ -78,8 +78,24 @@ export default class ColumnList extends Component {
   this.props.deleteColumn(i)
 }
 
+onDragOver = (e)=> {
+  e.preventDefault();
+  console.log('drag over started with id: ' + e.dataTransfer.getData("id"));
+}
+
+  onDrop = (e, j) =>{
+    console.log('drop event started with id' + e.dataTransfer.getData("id"));
+    e.preventDefault();
+    let id = e.dataTransfer.getData("id");
+    let title = e.dataTransfer.getData("title");
+    let description = e.dataTransfer.getData("description");
+    let columnId = e.dataTransfer.getData("columnId");
+    this.deleteCard(id, title, description, columnId);
+    this.changeCard(id, title, description, j);
+  }
+
   sortCardPerColumn = (j) => {
-  	return (<div className='ColumnArea' key={j}>
+  	return (<div onDragOver={(e)=>{this.onDragOver(e)}} onDrop={(e)=>{this.onDrop(e, j)}} className='ColumnArea' key={j}>
               {this.props.data.filter((cards) => this.checkCards(cards,j)).map((cards, i)=>{
                   return (<div className='ColumnListSet'>
                     <Column key={i} data={cards} editCard={this.changeCard} num={j} deleteCard={this.deleteCard}/>
